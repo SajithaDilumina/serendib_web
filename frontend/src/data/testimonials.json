@@ -1,0 +1,44 @@
+[
+  {
+    "id": "t1",
+    "name": "Nimal Perera",
+    "role": "HR Manager",
+    "company": "BlueRiver Logistics",
+    "quote": "Serendib ERP gave our team one source of truth for attendance and payroll. Approvals are now faster and far less error-prone."
+  },
+  {
+    "id": "t2",
+    "name": "Ayesha Fernando",
+    "role": "Operations Lead",
+    "company": "Lanka Retail Group",
+    "quote": "We rolled out department workflows in weeks, not months. The platform is intuitive and our managers actually enjoy using it."
+  },
+  {
+    "id": "t3",
+    "name": "Ravindu Silva",
+    "role": "Finance Controller",
+    "company": "Prime Foods",
+    "quote": "Audit trails and payroll analytics helped us close monthly reports faster with better confidence in every number."
+  },
+  {
+    "id": "t4",
+    "name": "Nadeesha Jayasuriya",
+    "role": "People Ops Specialist",
+    "company": "Vertex Digital",
+    "quote": "Employee records, leave approvals, and role permissions are finally centralized. It removed a lot of manual follow-ups."
+  },
+  {
+    "id": "t5",
+    "name": "Tharindu Wijeratne",
+    "role": "Admin Executive",
+    "company": "Oceanic Manufacturing",
+    "quote": "The configurable approvals and clean interface made adoption smooth across our plants and regional teams."
+  },
+  {
+    "id": "t6",
+    "name": "Ishani Ranasinghe",
+    "role": "Payroll Officer",
+    "company": "Crestline Services",
+    "quote": "Loan and advance management used to be chaotic. With Serendib ERP, everything is trackable and easy to reconcile."
+  }
+]

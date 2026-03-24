@@ -1,13 +1,5 @@
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
+import Home from "./pages/Home";
 
-const App = () => {
-  return (
-    <div className="app-shell">
-      <Navbar />
-      <Hero />
-    </div>
-  );
-};
-
-export default App;
+export default function App() {
+  return <Home />;
+}

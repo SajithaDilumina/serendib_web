@@ -1,0 +1,35 @@
+{
+  "brand": {
+    "name": "Serendib ERP",
+    "addressLines": [
+      "Head Office",
+      "123 Reid Avenue, Colombo",
+      "Sri Lanka"
+    ],
+    "email": "support@serendiberp.com"
+  },
+  "linkGroups": [
+    {
+      "title": "Sections",
+      "links": [
+        { "label": "Home", "href": "#home" },
+        { "label": "Scale", "href": "#scale" },
+        { "label": "Pricing", "href": "#pricing" },
+        { "label": "Testimonials", "href": "#testimonials" }
+      ]
+    },
+    {
+      "title": "Resources",
+      "links": [
+        { "label": "Hero", "href": "#home" },
+        { "label": "Pricing Form", "href": "#pricing" },
+        { "label": "Customer Stories", "href": "#testimonials" }
+      ]
+    }
+  ],
+  "legalLinks": [
+    { "label": "Terms & Conditions", "href": "#" },
+    { "label": "Privacy Policy", "href": "#" }
+  ],
+  "copyright": "Copyright 2026 Serendib ERP"
+}
