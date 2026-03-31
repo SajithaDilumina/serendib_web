@@ -3,48 +3,58 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 const STACK_GAP_PX = 38;
+const BASE_PATH = (import.meta.env.BASE_URL || "/").endsWith("/")
+  ? import.meta.env.BASE_URL || "/"
+  : `${import.meta.env.BASE_URL}/`;
 
 const PANELS = [
   {
     bg: "bg-[#f3f7f5]",
     placeholder: "bg-[#dfe8e3]",
-    label: "+ Team management",
-    title: "Keep your team organized and secure",
+    label: "+ Manage people",
+    title: "Hire, manage, and grow your workforce",
     description:
-      "Easily manage employees, roles, and permissions to streamline your HR processes.",
+      "Handle everything from employee records to performance, recruitment, and lifecycle management in one place.",
     bullets: [
-      "Assign roles and permissions effortlessly",
-      "Maintain complete employee records and directories",
-      "Organize departments and teams with clarity",
-      "Design your organization hierarchy visually",
+      "Centralized employee records and directories",
+      "Recruitment, hiring, and onboarding workflows",
+      "Performance tracking and appraisals",
+      "Employee self-service and lifecycle management",
     ],
+    ctaLabel: "Explore People",
+    ctaHref: `${BASE_PATH}#/features/people`,
   },
   {
     bg: "bg-[#e7f0ec]",
     placeholder: "bg-[#d2e1da]",
-    label: "+ Workforce operations",
-    title: "Simplify daily work and compliance",
+    label: "+ Run operations",
+    title: "Streamline daily work and internal processes",
     description:
-      "Track attendance, approve leaves, and ensure secure, auditable operations across your company.",
+      "Manage attendance, leave, assets, and internal workflows with full visibility and control.",
     bullets: [
-      "Live attendance tracking and logs",
-      "Smooth leave approval workflows",
-      "Immutable audit trails for compliance",
-      "Secure, confidential employee reports",
+      "Attendance, shift, and leave management",
+      "Asset tracking and administrative operations",
+      "Internal communication and notifications",
+      "Workflow automation and policy controls",
     ],
+    ctaLabel: "Explore Operations",
+    ctaHref: `${BASE_PATH}#/features/operations`,
   },
   {
     bg: "bg-[#dde9e3]",
     placeholder: "bg-[#c8d8d0]",
-    label: "+ Payroll intelligence",
-    title: "Smart payroll and actionable analytics",
+    label: "+ Payroll & compliance",
+    title: "Automate payroll and stay compliant",
     description:
-      "Automate payroll, track trends, and manage financial workflows without hassle.",
+      "Run payroll seamlessly, manage financial workflows, and ensure compliance with audit-ready reporting.",
     bullets: [
-      "Enterprise payroll analytics and insights",
-      "Searchable master ledger for pay history",
-      "Efficient loan and advance management",
+      "Payroll processing and salary structures",
+      "Loans, advances, and compensation management",
+      "Audit logs and compliance tracking",
+      "Analytics and export-ready reports",
     ],
+    ctaLabel: "Explore Payroll",
+    ctaHref: `${BASE_PATH}#/features/payroll`,
   },
 ];
 
@@ -94,7 +104,7 @@ export default function ScrollPanels() {
       {PANELS.map((panel, i) => (
         <div
           key={i}
-          className="fixed left-0 right-0 overflow-hidden"
+          className="pointer-events-none fixed left-0 right-0 overflow-hidden"
           style={{
             top: "var(--navbar-height)",
             height: "calc(100vh - var(--navbar-height))",
@@ -102,7 +112,7 @@ export default function ScrollPanels() {
           }}
         >
           <div
-            className={`h-full w-full rounded-t-3xl ${panel.bg}`}
+            className={`pointer-events-auto h-full w-full rounded-t-3xl ${panel.bg}`}
             style={{
               transform: slideTransform(i),
             }}
@@ -143,6 +153,13 @@ export default function ScrollPanels() {
                       </li>
                     ))}
                   </ul>
+
+                  <a
+                    href={panel.ctaHref}
+                    className="mt-8 inline-flex items-center justify-center rounded-lg border border-[#2e7b68]/35 bg-white/60 px-5 py-2.5 text-sm font-semibold text-[#1e4f43] transition-colors hover:border-[#2e7b68]/55 hover:bg-white/80"
+                  >
+                    {panel.ctaLabel}
+                  </a>
                 </motion.div>
 
                 <motion.div

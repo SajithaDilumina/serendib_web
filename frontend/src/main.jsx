@@ -10,8 +10,23 @@ function SmoothScrollProvider({ children }) {
       smoothWheel: true,
       smoothTouch: false,
       duration: 1.1,
-      anchors: true,
+      anchors: false,
     });
+
+    const onAnchorClick = (event) => {
+      const anchor = event.target.closest("a[href]");
+      if (!anchor) return;
+      const href = anchor.getAttribute("href");
+      if (!href || !href.startsWith("#") || href.startsWith("#/")) return;
+
+      const target = document.querySelector(href);
+      if (!target) return;
+
+      event.preventDefault();
+      lenis.scrollTo(target);
+    };
+
+    document.addEventListener("click", onAnchorClick);
 
     let rafId = 0;
     const raf = (time) => {
@@ -22,6 +37,7 @@ function SmoothScrollProvider({ children }) {
     rafId = window.requestAnimationFrame(raf);
 
     return () => {
+      document.removeEventListener("click", onAnchorClick);
       window.cancelAnimationFrame(rafId);
       lenis.destroy();
     };
