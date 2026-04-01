@@ -9,34 +9,30 @@ import heroBackground from "../assets/background_image.png";
 
 export default function Home() {
   return (
-    <div id="home" className="relative min-h-screen">
-      <div
-        className="pointer-events-none fixed inset-0 z-0 bg-[#020606] bg-cover bg-[center_top] bg-no-repeat"
-        style={{ backgroundImage: `url(${heroBackground})` }}
-        aria-hidden
-      />
-      <div
-        className="pointer-events-none fixed inset-0 z-0 bg-gradient-to-r from-black/45 via-black/15 to-transparent"
-        aria-hidden
-      />
-
-      {/* Stacking colored panels (between hero and navbar in z-order) */}
-      <ScrollPanels />
-
-      {/* Fixed home: hero sits under panels; navbar rendered last so it stays on top */}
-      <div className="fixed inset-x-0 bottom-0 top-[var(--navbar-height)] z-10 overflow-hidden">
-        <Hero />
-      </div>
-
+    <div id="home" className="relative min-h-screen min-w-0 max-w-full overflow-x-hidden">
       <Navbar />
 
-      {/* Drives window scroll while the home layer stays fixed */}
-      <div className="h-[400vh]" aria-hidden />
-
-      <ScaleSection />
-      <Pricing />
-      <TestimonialsSection />
-      <Footer />
+      <main className="relative z-10 pt-(--navbar-height)">
+        <section className="relative overflow-hidden">
+          <div
+            className="pointer-events-none absolute inset-0 z-0 bg-[#020606] bg-cover bg-position-[center_top] bg-no-repeat"
+            style={{ backgroundImage: `url(${heroBackground})` }}
+            aria-hidden
+          />
+          <div
+            className="pointer-events-none absolute inset-0 z-0 bg-linear-to-r from-black/40 via-black/22 to-black/28"
+            aria-hidden
+          />
+          <div className="relative z-10">
+            <Hero />
+          </div>
+        </section>
+        <ScrollPanels />
+        <ScaleSection />
+        <Pricing />
+        <TestimonialsSection />
+        <Footer />
+      </main>
     </div>
   );
 }

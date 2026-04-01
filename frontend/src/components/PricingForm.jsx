@@ -1,7 +1,7 @@
 export default function PricingForm() {
   return (
     <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-[0_20px_60px_-30px_rgba(15,23,42,0.35)] sm:p-7">
-      <h2 className="text-2xl font-semibold tracking-tight text-slate-900 sm:text-[2rem]">
+      <h2 className="text-xl font-semibold tracking-tight text-slate-900 sm:text-2xl sm:tracking-tight md:text-[2rem]">
         Get your custom ERP quote
       </h2>
 

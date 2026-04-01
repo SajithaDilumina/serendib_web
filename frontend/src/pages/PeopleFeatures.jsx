@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
 import Navbar from "../components/Navbar";
+import CTAButton from "../components/CTAButton";
 
 const features = [
   {
@@ -60,28 +60,29 @@ export default function PeopleFeatures() {
           <p className="relative mb-5 text-xs font-medium uppercase tracking-[0.18em] text-erp-accent">
              + Manage People
           </p>
-          <h1 className="relative text-balance text-[clamp(2.4rem,5.6vw,4.6rem)] font-semibold leading-[1.04] tracking-[-0.03em] text-white">
+          <h1 className="relative text-balance text-[clamp(1.85rem,4.5vw,4.6rem)] font-semibold leading-[1.06] tracking-[-0.03em] text-white sm:text-[clamp(2.4rem,5.6vw,4.6rem)] sm:leading-[1.04]">
             Hire, Manage, and Grow Your Workforce
           </h1>
-          <p className="relative mx-auto mt-6 max-w-3xl text-base leading-relaxed text-erp-text-muted sm:text-lg">
+          <p className="relative mx-auto mt-4 max-w-3xl text-sm leading-relaxed text-erp-text-muted sm:mt-6 sm:text-base md:text-lg">
             From recruitment to performance and the full employee lifecycle,
             manage everything about your people in one unified system.
           </p>
 
-          <div className="relative mt-9 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center sm:justify-center">
-            <button
-              type="button"
-              className="inline-flex items-center justify-center gap-2 rounded-lg bg-erp-accent px-7 py-3.5 text-[15px] font-semibold text-erp-accent-foreground shadow-[0_0_32px_-8px_rgba(73,255,216,0.4)] transition-opacity hover:opacity-90"
-            >
-              Start Free Trial
-              <ArrowRight className="size-4" strokeWidth={2.2} aria-hidden />
-            </button>
-            <button
-              type="button"
-              className="inline-flex items-center justify-center rounded-lg border border-white/25 bg-transparent px-7 py-3.5 text-[15px] font-medium text-white transition-colors hover:border-white/40 hover:bg-white/4"
-            >
-              Book a Free Demo
-            </button>
+          <div className="relative mt-6 flex flex-col items-stretch justify-center gap-2.5 sm:mt-9 sm:flex-row sm:items-center sm:justify-center sm:gap-3">
+            <CTAButton
+              label="Start Free Trial"
+              variant="primary"
+              size="feature"
+              withArrow
+              flipText
+              className="font-semibold shadow-[0_0_32px_-8px_rgba(73,255,216,0.4)]"
+            />
+            <CTAButton
+              label="Book a Free Demo"
+              variant="secondary"
+              size="feature"
+              flipText
+            />
           </div>
         </section>
 

@@ -45,20 +45,20 @@ export default function Pricing() {
               + Plans
             </p>
 
-            <h1 className="text-balance text-[clamp(2rem,4.5vw,4rem)] font-bold leading-[1.05] tracking-[-0.03em] text-slate-900">
+            <h1 className="text-balance text-[clamp(1.7rem,4vw,4rem)] font-bold leading-[1.08] tracking-[-0.03em] text-slate-900 sm:text-[clamp(2rem,4.5vw,4rem)] sm:leading-[1.05]">
               Flexible Pricing
             </h1>
 
-            <p className="mt-6 text-base leading-relaxed text-slate-600 sm:text-lg">
+            <p className="mt-4 text-sm leading-relaxed text-slate-600 sm:mt-6 sm:text-base md:text-lg">
               We understand that pricing is an important consideration when
               evaluating ERP solutions. Our goal is to provide flexible, tailored
               pricing that aligns with your organization&apos;s needs and ensures a
               strong ROI. To build a custom plan, consider the following:
             </p>
 
-            <ul className="mt-7 space-y-4">
+            <ul className="mt-5 space-y-3 sm:mt-7 sm:space-y-4">
               {considerations.map((item) => (
-                <li key={item} className="flex items-start gap-3 text-slate-700">
+                <li key={item} className="flex items-start gap-3 text-sm text-slate-700 sm:text-base">
                   <Check
                     className="mt-0.5 size-4 shrink-0 text-teal-700"
                     strokeWidth={2.4}
@@ -69,7 +69,7 @@ export default function Pricing() {
               ))}
             </ul>
 
-            <p className="mt-8 text-base leading-relaxed text-slate-600 sm:text-lg">
+            <p className="mt-6 text-sm leading-relaxed text-slate-600 sm:mt-8 sm:text-base md:text-lg">
               Our team will work with you to design a plan that fits your
               organization&apos;s size, needs, and growth goals.
             </p>

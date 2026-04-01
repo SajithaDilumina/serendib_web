@@ -33,17 +33,18 @@ export default function App() {
     };
   }, []);
 
-  if (route === "/features/people") {
-    return <PeopleFeatures />;
-  }
+  const page =
+    route === "/features/people" ? (
+      <PeopleFeatures />
+    ) : route === "/features/operations" ? (
+      <OperationsFeatures />
+    ) : route === "/features/payroll" ? (
+      <PayrollFeatures />
+    ) : (
+      <Home />
+    );
 
-  if (route === "/features/operations") {
-    return <OperationsFeatures />;
-  }
-
-  if (route === "/features/payroll") {
-    return <PayrollFeatures />;
-  }
-
-  return <Home />;
+  return (
+    <div className="min-w-0 max-w-full overflow-x-hidden">{page}</div>
+  );
 }

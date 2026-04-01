@@ -1,8 +1,9 @@
 import { ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import interviewIllustration from "../assets/Interview-amico.svg";
+import teamChecklistIllustration from "../assets/team checklist-amico.svg";
+import taxIllustration from "../assets/Tax-amico.svg";
 
-const STACK_GAP_PX = 38;
 const BASE_PATH = (import.meta.env.BASE_URL || "/").endsWith("/")
   ? import.meta.env.BASE_URL || "/"
   : `${import.meta.env.BASE_URL}/`;
@@ -60,7 +61,11 @@ const PANELS = [
 
 const leftReveal = {
   hidden: { opacity: 0, x: -56 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.55, ease: "easeOut" } },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.55, ease: "easeOut" },
+  },
 };
 
 const rightReveal = {
@@ -73,76 +78,39 @@ const rightReveal = {
 };
 
 export default function ScrollPanels() {
-  const [scrollY, setScrollY] = useState(0);
-  const [vh, setVh] = useState(800);
-
-  useEffect(() => {
-    const onResize = () => setVh(window.innerHeight);
-    const onScroll = () => setScrollY(window.scrollY);
-    onResize();
-    onScroll();
-    window.addEventListener("resize", onResize);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => {
-      window.removeEventListener("resize", onResize);
-      window.removeEventListener("scroll", onScroll);
-    };
-  }, []);
-
-  /** Panels settle with a stepped gap (0px, 28px, 56px). */
-  const slideTransform = (index) => {
-    const t = Math.min(1, Math.max(0, (scrollY - index * vh) / vh));
-    const stopOffset = index * STACK_GAP_PX;
-    return `translateY(calc(${(1 - t) * 100}% + ${stopOffset}px - ${stackOffset}px))`;
-  };
-
-  /** After three viewports of scroll, whole stack moves up together */
-  const stackOffset = scrollY > 3 * vh ? scrollY - 3 * vh : 0;
-
   return (
-    <>
-      {PANELS.map((panel, i) => (
-        <div
-          key={i}
-          className="pointer-events-none fixed left-0 right-0 overflow-hidden"
-          style={{
-            top: "var(--navbar-height)",
-            height: "calc(100vh - var(--navbar-height))",
-            zIndex: 20 + i * 10,
-          }}
-        >
-          <div
-            className={`pointer-events-auto h-full w-full rounded-t-3xl ${panel.bg}`}
-            style={{
-              transform: slideTransform(i),
-            }}
-          >
-            <div className="page-shell flex h-full items-center py-12 sm:py-16">
-              <section className="grid w-full gap-10 lg:grid-cols-2 lg:items-center lg:gap-16">
+    <section className="relative z-30">
+      {PANELS.map((panel, index) => (
+        <section key={panel.ctaLabel} className={`${panel.bg} py-12 sm:py-14 lg:py-16`}>
+          <div className="page-shell">
+            <section className="grid w-full gap-6 sm:gap-8 lg:grid-cols-2 lg:items-center lg:gap-10">
                 <motion.div
                   className="max-w-xl text-[#101418]"
                   variants={leftReveal}
                   initial="hidden"
                   whileInView="visible"
-                  viewport={{ once: true, amount: 0.3 }}
+                  viewport={{
+                    once: true,
+                    amount: 0.2,
+                  }}
                 >
-                  <p className="mb-5 text-xs font-medium uppercase tracking-[0.18em] text-[#3d6a5d]">
+                  <p className="mb-3 text-xs font-medium uppercase tracking-[0.18em] text-[#3d6a5d] sm:mb-5">
                     {panel.label}
                   </p>
 
-                  <h2 className="text-balance text-[clamp(2rem,4.8vw,4.25rem)] font-semibold leading-[1.06] tracking-[-0.03em]">
+                  <h2 className="text-balance text-[clamp(1.4rem,4.5vw,3.6rem)] font-semibold leading-[1.08] tracking-[-0.03em] sm:text-[clamp(1.9rem,3.8vw,3.3rem)] sm:leading-[1.06] xl:text-[clamp(2rem,4.8vw,4.25rem)]">
                     {panel.title}
                   </h2>
 
-                  <p className="mt-6 max-w-lg text-base leading-relaxed text-[#4a5961]">
+                  <p className="mt-2.5 max-w-lg text-sm leading-relaxed text-[#4a5961] sm:mt-4 sm:text-sm md:text-base">
                     {panel.description}
                   </p>
 
-                  <ul className="mt-7 space-y-3">
+                  <ul className="mt-2.5 space-y-1.5 sm:mt-4 sm:space-y-2">
                     {panel.bullets.map((item) => (
                       <li
                         key={item}
-                        className="flex items-start gap-2.5 text-[15px] text-[#253038]"
+                        className="flex items-start gap-2 text-sm text-[#253038] sm:gap-2.5 sm:text-sm md:text-[15px]"
                       >
                         <ChevronRight
                           className="mt-0.5 size-4 shrink-0 text-[#2e7b68]"
@@ -156,7 +124,7 @@ export default function ScrollPanels() {
 
                   <a
                     href={panel.ctaHref}
-                    className="mt-8 inline-flex items-center justify-center rounded-lg border border-[#2e7b68]/35 bg-white/60 px-5 py-2.5 text-sm font-semibold text-[#1e4f43] transition-colors hover:border-[#2e7b68]/55 hover:bg-white/80"
+                    className="mt-3 inline-flex items-center justify-center rounded-lg border border-[#2e7b68]/35 bg-white/60 px-4 py-2 text-xs font-semibold text-[#1e4f43] transition-colors hover:border-[#2e7b68]/55 hover:bg-white/80 sm:mt-4 sm:px-5 sm:py-2.5 sm:text-sm"
                   >
                     {panel.ctaLabel}
                   </a>
@@ -167,22 +135,45 @@ export default function ScrollPanels() {
                   variants={rightReveal}
                   initial="hidden"
                   whileInView="visible"
-                  viewport={{ once: true, amount: 0.3 }}
+                  viewport={{
+                    once: true,
+                    amount: 0.2,
+                  }}
                 >
                   <div
-                    className={`flex h-[320px] w-full max-w-[420px] items-center justify-center rounded-[1.75rem] ${panel.placeholder} p-8 shadow-[0_10px_32px_rgba(23,37,31,0.12)]`}
+                    className={`flex w-full items-center justify-center rounded-[1.25rem] shadow-[0_10px_32px_rgba(23,37,31,0.12)] sm:rounded-[1.75rem] ${
+                      "h-[200px] max-w-[460px] p-3 sm:h-[280px] sm:p-4 lg:h-[320px] xl:h-[360px]"
+                    } ${panel.placeholder}`}
                     aria-label="HR module image placeholder"
                   >
-                    <div className="flex h-full w-full items-center justify-center rounded-2xl border border-white/60 bg-white/55 text-sm font-medium tracking-wide text-[#526068]">
-                      Image Placeholder
-                    </div>
+                    {index === 0 ? (
+                      <img
+                        src={interviewIllustration}
+                        alt="Interview workflow illustration"
+                        className="h-[112%] w-[112%] max-w-none object-contain"
+                        loading="lazy"
+                      />
+                    ) : index === 1 ? (
+                      <img
+                        src={teamChecklistIllustration}
+                        alt="Team checklist illustration"
+                        className="h-[112%] w-[112%] max-w-none object-contain"
+                        loading="lazy"
+                      />
+                    ) : (
+                      <img
+                        src={taxIllustration}
+                        alt="Tax and compliance illustration"
+                        className="h-[112%] w-[112%] max-w-none object-contain"
+                        loading="lazy"
+                      />
+                    )}
                   </div>
                 </motion.div>
-              </section>
-            </div>
+            </section>
           </div>
-        </div>
+        </section>
       ))}
-    </>
+    </section>
   );
 }

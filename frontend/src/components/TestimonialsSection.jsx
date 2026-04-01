@@ -91,11 +91,11 @@ export default function TestimonialsSection() {
   return (
     <section
       id="testimonials"
-      className="relative z-45 overflow-hidden bg-[#03110e] py-16 sm:py-20"
+      className="relative z-45 w-full min-w-0 max-w-full overflow-x-hidden overflow-y-visible bg-[#03110e] py-16 sm:py-20"
     >
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(45,212,191,0.22),rgba(3,17,14,0.96)_58%)]" />
 
-      <div className="page-shell relative">
+      <div className="page-shell relative min-w-0 max-w-full">
         <motion.div
           className="mx-auto max-w-3xl text-center"
           variants={leftReveal}
@@ -106,17 +106,17 @@ export default function TestimonialsSection() {
           <p className="mb-5 text-xs font-semibold uppercase tracking-[0.18em] text-teal-300">
             + Trusted teams
           </p>
-          <h2 className="text-balance text-[clamp(2rem,4.8vw,4.2rem)] font-semibold leading-[1.08] tracking-[-0.03em] text-white">
+          <h2 className="text-balance text-[clamp(1.65rem,4.2vw,4.2rem)] font-semibold leading-[1.1] tracking-[-0.03em] text-white sm:text-[clamp(2rem,4.8vw,4.2rem)] sm:leading-[1.08]">
             Loved by growing teams
           </h2>
-          <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-slate-300 sm:text-lg">
+          <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-slate-300 sm:mt-5 sm:text-base md:text-lg">
             Teams use Serendib ERP to simplify daily operations, improve
             compliance, and scale confidently.
           </p>
         </motion.div>
 
         <motion.div
-          className="mt-14 overflow-hidden py-6"
+          className="mt-14 min-w-0 max-w-full overflow-x-hidden overflow-y-visible py-6"
           aria-label="Customer testimonials"
           variants={rightReveal}
           initial="hidden"
@@ -125,7 +125,7 @@ export default function TestimonialsSection() {
         >
           <motion.div
             ref={trackRef}
-            className="flex w-max gap-5 pb-6"
+            className="flex w-max max-w-none gap-5 pb-6"
             style={{ x }}
             drag="x"
             dragConstraints={{ left: -halfWidth, right: 0 }}
